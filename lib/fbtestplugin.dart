@@ -33,6 +33,7 @@ class Fbtestplugin {
 
     Object deser = dson.decode(valueResponse.body, o);
     _responseBody = deser;
+    print("Response: ${_responseBody.toString()}");
   }
 
   Object retrieveData(Object o) {
