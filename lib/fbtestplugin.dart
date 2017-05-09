@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
@@ -13,8 +14,8 @@ class Fbtestplugin {
   int _childCounter = 0;
 
   Fbtestplugin(String url) {
-    databaseRootUrl = url;
     print('Root URL is: $url');
+    workingUrl = url;
   }
 
   child(String appendage) {
@@ -25,5 +26,12 @@ class Fbtestplugin {
       workingUrl = workingUrl + appendage + "/";
     }
     print("Working URL: $workingUrl");
+  }
+
+  getValue() async {
+    var httpClient = createHttpClient();
+    String forJson = workingUrl + ".json";
+    var valueResponse = await httpClient.get(forJson);
+    print("Response code: ${valueResponse.statusCode}");
   }
 }
