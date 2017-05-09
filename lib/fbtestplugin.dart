@@ -1,6 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
-
+import 'package:dartson/dartson.dart';
 import 'package:flutter/services.dart';
 
 class Fbtestplugin {
@@ -10,7 +9,9 @@ class Fbtestplugin {
   static Future<String> get platformVersion =>
       _channel.invokeMethod('getPlatformVersion');
 
-  String databaseRootUrl, workingUrl;
+  String databaseRootUrl, workingUrl, resp;
+
+  Object _responseBody;
 
   Fbtestplugin(String url) {
     print('Root URL is: $url');
@@ -22,10 +23,20 @@ class Fbtestplugin {
     print('Working URL: $workingUrl');
   }
 
-  getValue() async {
+  getValue(Object o) async {
     var httpClient = createHttpClient();
     String forJson = workingUrl + ".json";
     var valueResponse = await httpClient.get(forJson);
     print("Response code: ${valueResponse.statusCode}");
+
+    var dson = new Dartson.JSON();
+
+    Object deser = dson.decode(valueResponse.body, o);
+    _responseBody = deser;
+  }
+
+  Object retrieveData(Object o) {
+    getValue(o);
+    return _responseBody;
   }
 }
