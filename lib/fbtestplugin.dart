@@ -13,5 +13,6 @@ class Fbtestplugin {
 
   Fbtestplugin(String url) {
     databaseRootUrl = url;
+    print('Root URL is: $url');
   }
 }
