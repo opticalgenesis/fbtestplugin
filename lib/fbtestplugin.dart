@@ -11,7 +11,7 @@ class Fbtestplugin {
 
   String databaseRootUrl, workingUrl, resp;
 
-  Object _responseBody;
+  String _responseBody;
 
   Fbtestplugin(String url) {
     print('Root URL is: $url');
@@ -31,7 +31,7 @@ class Fbtestplugin {
 
     var dson = new Dartson.JSON();
 
-    Object deser = dson.decode(valueResponse.body, o);
+    String deser = dson.decode(valueResponse.body, o);
     _responseBody = deser;
     print("Response: ${_responseBody.toString()}");
   }
