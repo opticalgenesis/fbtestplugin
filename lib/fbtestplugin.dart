@@ -10,6 +10,7 @@ class Fbtestplugin {
       _channel.invokeMethod('getPlatformVersion');
 
   String databaseRootUrl, workingUrl;
+  int childCounter = 0;
 
   Fbtestplugin(String url) {
     databaseRootUrl = url;
@@ -17,7 +18,11 @@ class Fbtestplugin {
   }
 
   child(String appendage) {
-    workingUrl = databaseRootUrl + "/" + appendage;
-    print('Child URL is: $workingUrl');
+    childCounter++;
+    if(childCounter == 1) {
+      workingUrl = databaseRootUrl + appendage + "/";
+    } else {
+      workingUrl = workingUrl + appendage + "/";
+    }
   }
 }
