@@ -9,10 +9,9 @@ class Fbtestplugin {
   static Future<String> get platformVersion =>
       _channel.invokeMethod('getPlatformVersion');
 
-  String mUrl;
+  String databaseRootUrl;
 
-  setUrl(String url) {
-    this.mUrl = url;
-    print(url);
+  Fbtestplugin(String url) {
+    databaseRootUrl = url;
   }
 }
