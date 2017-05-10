@@ -22,14 +22,10 @@ class Fbtestplugin {
     print('Working URL: $workingUrl');
   }
 
-  getValue() async {
+  Future<String> getValue() async {
     var httpClient = createHttpClient();
     String forJson = workingUrl + ".json";
-    var valueResponse = await httpClient.get(forJson).then((string) => print("Task is done"));
-  }
-
-  String getValueJson() {
-    getValue();
-    return "";
+    var valueResponse = await httpClient.get(forJson);
+    return valueResponse.body;
   }
 }
