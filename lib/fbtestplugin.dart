@@ -25,17 +25,11 @@ class Fbtestplugin {
   getValue() async {
     var httpClient = createHttpClient();
     String forJson = workingUrl + ".json";
-    var valueResponse = await httpClient.get(forJson);
-    _responseBody = valueResponse.body;
-    print("Repsonse body: $_responseBody");
-    print("Value response body: ${valueResponse.body}");
+    var valueResponse = await httpClient.get(forJson).then((string) => print("Task is done"));
   }
 
   String getValueJson() {
-    do {
-      getValue();
-      print("Waiting...");
-    } while(_responseBody == "");
-    return _responseBody;
+    getValue();
+    return "";
   }
 }
