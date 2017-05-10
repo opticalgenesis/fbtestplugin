@@ -10,7 +10,7 @@ class Fbtestplugin {
 
   String databaseRootUrl, workingUrl, resp;
 
-  String _responseBody;
+  String responseBody;
 
   Fbtestplugin(String url) {
     print('Root URL is: $url');
@@ -26,10 +26,10 @@ class Fbtestplugin {
     var httpClient = createHttpClient();
     String forJson = workingUrl + ".json";
     var valueResponse = await httpClient.get(forJson);
-    _responseBody = valueResponse.body;
+    responseBody = valueResponse.body;
   }
 
   String getValueJson() {
-    return _responseBody;
+    return responseBody;
   }
 }
