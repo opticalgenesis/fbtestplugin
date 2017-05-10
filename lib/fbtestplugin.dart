@@ -27,6 +27,8 @@ class Fbtestplugin {
     String forJson = workingUrl + ".json";
     var valueResponse = await httpClient.get(forJson);
     responseBody = valueResponse.body;
+    print("Repsonse body: $responseBody");
+    print("Value response body: ${valueResponse.body}");
   }
 
   String getValueJson() {
