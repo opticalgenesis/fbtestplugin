@@ -32,7 +32,9 @@ class Fbtestplugin {
   }
 
   String getValueJson() {
-    getValue();
+    do {
+      getValue();
+    } while(_responseBody == null);
     return _responseBody;
   }
 }
