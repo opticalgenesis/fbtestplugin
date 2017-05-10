@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:dartson/dartson.dart';
 import 'package:flutter/services.dart';
 
 class Fbtestplugin {
@@ -23,23 +22,14 @@ class Fbtestplugin {
     print('Working URL: $workingUrl');
   }
 
-  getValue(Object o) async {
+  getValue() async {
     var httpClient = createHttpClient();
     String forJson = workingUrl + ".json";
     var valueResponse = await httpClient.get(forJson);
-    print("Response code: ${valueResponse.statusCode}");
-
-    var dson = new Dartson.JSON();
-
-    print("Response Body: ${valueResponse.body}");
-
-    /*String deser = dson.decode(valueResponse.body, o);
-    _responseBody = deser;
-    print("Response: ${_responseBody.toString()}");*/
+    _responseBody = valueResponse.body;
   }
 
-  Object retrieveData(Object o) {
-    getValue(o);
+  String getValueJson() {
     return _responseBody;
   }
 }
