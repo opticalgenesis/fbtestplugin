@@ -31,9 +31,11 @@ class Fbtestplugin {
 
     var dson = new Dartson.JSON();
 
-    String deser = dson.decode(valueResponse.body, o);
+    print("Response Body: ${valueResponse.body}");
+
+    /*String deser = dson.decode(valueResponse.body, o);
     _responseBody = deser;
-    print("Response: ${_responseBody.toString()}");
+    print("Response: ${_responseBody.toString()}");*/
   }
 
   Object retrieveData(Object o) {
