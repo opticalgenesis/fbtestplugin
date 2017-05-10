@@ -10,7 +10,7 @@ class Fbtestplugin {
 
   String databaseRootUrl, workingUrl, resp;
 
-  String _responseBody;
+  String _responseBody = "";
 
   Fbtestplugin(String url) {
     print('Root URL is: $url');
@@ -34,7 +34,8 @@ class Fbtestplugin {
   String getValueJson() {
     do {
       getValue();
-    } while(_responseBody == null);
+      print("Waiting...");
+    } while(_responseBody == "");
     return _responseBody;
   }
 }
